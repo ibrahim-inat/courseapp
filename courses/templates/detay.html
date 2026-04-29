@@ -1,0 +1,22 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-5">
+            <img src="{{ kurs.image.url }}" class="img-fluid rounded shadow" alt="{{ kurs.title }}">
+        </div>
+        <div class="col-md-7">
+            <h1 class="display-4">{{ kurs.title }}</h1>
+            <hr>
+            <p class="lead">{{ kurs.description }}</p>
+            <div class="alert alert-info">
+                Bu kurs şu an aktif ve kayıt alıyor!
+            </div>
+            <button class="btn btn-success btn-lg">Hemen Kayıt Ol</button>
+            <a href="/kurslar/" class="btn btn-outline-secondary btn-lg">Geri Dön</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

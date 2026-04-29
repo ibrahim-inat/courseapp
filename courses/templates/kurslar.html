@@ -1,0 +1,43 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-3">
+        <div class="list-group shadow-sm">
+            <a href="/kurslar/" class="list-group-item list-group-item-action bg-dark text-white">
+                Tüm Kategoriler
+            </a>
+            
+            {% for kategori in kategoriler %}
+                <a href="/kurslar/{{ kategori.slug }}/" class="list-group-item list-group-item-action">
+                    {{ kategori.name }}
+                </a>
+            {% endfor %}
+            </div>
+    </div>
+
+    <div class="col-md-9">
+        <h2 class="mb-4">Kurs Listesi</h2>
+        <div class="row">
+            {% for kurs in kurslar %}
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <img src="{{ kurs.imageUrl }}" class="card-img-top" alt="{{ kurs.title }}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ kurs.title }}</h5>
+                            <p class="card-text">{{ kurs.description|truncatechars:100 }}</p>
+                        </div>
+                        <div class="card-footer bg-white border-top-0">
+                            <a href="/kurslar/{{ kurs.id }}/" class="btn btn-outline-primary w-100">Detayları İncele</a>
+                        </div>
+                    </div>
+                </div>
+            {% empty %}
+                <div class="col-12">
+                    <div class="alert alert-warning">Bu kategoride henüz bir kurs bulunmuyor.</div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}
